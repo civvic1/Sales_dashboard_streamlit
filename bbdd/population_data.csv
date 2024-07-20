@@ -1,0 +1,28 @@
+Estado,ISO_3166_2,Capital,Population,Area_km2,Density_pers_km2,Región,abbrev_state
+Acre,BR-AC,Rio Branco,830026,153150,542,Norte,AC
+Alagoas,BR-AL,Maceió,3127511,27933,11196,Nordeste,AL
+Amapá,BR-AP,Macapá,733508,143454,511,Norte,AP
+Amazonas,BR-AM,Manaus,3941175,1577820,250,Norte,AM
+Bahia,BR-BA,Salvador,14136417,567295,2492,Nordeste,BA
+Ceará,BR-CE,Fortaleza,8791688,146348,6007,Nordeste,CE
+Distrito Federal,BR-DF,Brasília,2817068,5822,48387,Centro-Oeste,DF
+Espírito Santo,BR-ES,Vitória,3833486,46184,8300,Sudeste,ES
+Goiás,BR-GO,Goiânia,7055228,341290,2067,Centro-Oeste,GO
+Maranhão,BR-MA,São Luís,6775152,333366,2032,Nordeste,MA
+Mato Grosso,BR-MT,Cuiabá,3658813,906807,403,Centro-Oeste,MT
+Mato Grosso do Sul,BR-MS,Campo Grande,2756700,358159,770,Centro-Oeste,MS
+Minas Gerais,BR-MG,Belo Horizonte,20538718,588384,3491,Sudeste,MG
+Pará,BR-PA,Belém,8116132,1253165,648,Norte,PA
+Paraíba,BR-PB,João Pessoa,3974495,56585,7024,Nordeste,PB
+Paraná,BR-PR,Curitiba,11443208,199709,5730,Sul,PR
+Pernambuco,BR-PE,Recife,9058155,98938,9155,Nordeste,PE
+Piauí,BR-PI,Teresina,3269200,252378,1295,Nordeste,PI
+Rio de Janeiro,BR-RJ,Rio de Janeiro,16054524,43910,36562,Sudeste,RJ
+Rio Grande do Norte,BR-RN,Natal,3302406,53307,6195,Nordeste,RN
+Rio Grande do Sul,BR-RS,Porto Alegre,10880506,282062,3857,Sul,RS
+Rondônia,BR-RO,Porto Velho,1581016,238513,663,Norte,RO
+Roraima,BR-RR,Boa Vista,636303,225116,283,Norte,RR
+Santa Catarina,BR-SC,Florianópolis,7609601,95443,7973,Sul,SC
+São Paulo,BR-SP,São Paulo,44420459,248809,17853,Sudeste,SP
+Sergipe,BR-SE,Aracaju,2209558,22050,10021,Nordeste,SE
+Tocantins,BR-TO,Palmas,1511459,278421,543,Norte,TO

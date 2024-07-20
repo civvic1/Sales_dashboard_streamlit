@@ -1,0 +1,106 @@
+
+import pandas as pd
+import plotly.express as px
+
+# Función para obtener las coordenadas de los estados de Brasil
+def obtener_coordenadas_estados():
+    coords = {
+        'AC': {'lat': -9.974, 'lon': -67.807},
+        'AL': {'lat': -9.571, 'lon': -36.646},
+        'AP': {'lat': 0.902, 'lon': -52.003},
+        'AM': {'lat': -3.416, 'lon': -65.856},
+        'BA': {'lat': -12.970, 'lon': -38.512},
+        'CE': {'lat': -3.717, 'lon': -38.543},
+        'DF': {'lat': -15.793, 'lon': -47.882},
+        'ES': {'lat': -19.919, 'lon': -40.367},
+        'GO': {'lat': -16.686, 'lon': -49.264},
+        'MA': {'lat': -2.538, 'lon': -44.282},
+        'MT': {'lat': -12.642, 'lon': -55.424},
+        'MS': {'lat': -20.469, 'lon': -54.620},
+        'MG': {'lat': -19.815, 'lon': -43.954},
+        'PA': {'lat': -1.455, 'lon': -48.502},
+        'PB': {'lat': -7.239, 'lon': -35.881},
+        'PR': {'lat': -25.428, 'lon': -49.273},
+        'PE': {'lat': -8.047, 'lon': -34.878},
+        'PI': {'lat': -5.092, 'lon': -42.803},
+        'RJ': {'lat': -22.906, 'lon': -43.173},
+        'RN': {'lat': -5.794, 'lon': -35.211},
+        'RS': {'lat': -30.033, 'lon': -51.230},
+        'RO': {'lat': -8.761, 'lon': -63.903},
+        'RR': {'lat': 2.823, 'lon': -60.675},
+        'SC': {'lat': -27.595, 'lon': -48.548},
+        'SP': {'lat': -23.550, 'lon': -46.633},
+        'SE': {'lat': -10.947, 'lon': -37.073},
+        'TO': {'lat': -10.184, 'lon': -48.333}
+    }
+    return coords
+
+# Función para obtener los nombres completos de los estados
+def obtener_nombres_estados():
+    nombres = {
+        'AC': 'Acre',
+        'AL': 'Alagoas',
+        'AP': 'Amapá',
+        'AM': 'Amazonas',
+        'BA': 'Bahia',
+        'CE': 'Ceará',
+        'DF': 'Distrito Federal',
+        'ES': 'Espírito Santo',
+        'GO': 'Goiás',
+        'MA': 'Maranhão',
+        'MT': 'Mato Grosso',
+        'MS': 'Mato Grosso do Sul',
+        'MG': 'Minas Gerais',
+        'PA': 'Pará',
+        'PB': 'Paraíba',
+        'PR': 'Paraná',
+        'PE': 'Pernambuco',
+        'PI': 'Piauí',
+        'RJ': 'Rio de Janeiro',
+        'RN': 'Rio Grande do Norte',
+        'RS': 'Rio Grande do Sul',
+        'RO': 'Rondônia',
+        'RR': 'Roraima',
+        'SC': 'Santa Catarina',
+        'SP': 'São Paulo',
+        'SE': 'Sergipe',
+        'TO': 'Tocantins'
+    }
+    return nombres
+
+# Función para crear el gráfico
+def crear_grafico(df):
+    df_mapa = df.groupby('abbrev_state').agg({'valor_total': 'sum'}).reset_index().sort_values(by='valor_total', ascending=False)
+    
+    # Añadir coordenadas
+    coords = obtener_coordenadas_estados()
+    df_mapa['lat'] = df_mapa['abbrev_state'].apply(lambda x: coords[x]['lat'])
+    df_mapa['lon'] = df_mapa['abbrev_state'].apply(lambda x: coords[x]['lon'])
+    
+    # Añadir nombres completos de los estados
+    nombres = obtener_nombres_estados()
+    df_mapa['nombre_estado'] = df_mapa['abbrev_state'].apply(lambda x: nombres[x])
+    
+    # Crear el gráfico
+    graf_mapa = px.scatter_geo(df_mapa,
+        lat='lat',
+        lon='lon',
+        size='valor_total',
+        hover_name='nombre_estado',  # Usar nombres completos de los estados
+        hover_data={'abbrev_state': True, 'valor_total': True},
+        title='Ingresos por estado en Brasil',
+        scope='south america',
+        template='seaborn'
+    )
+
+    return graf_mapa
+
+# Ejemplo de uso con un DataFrame de ejemplo
+data = {
+    'abbrev_state': ['SP', 'RJ', 'MG', 'BA', 'PR'],
+    'valor_total': [10000, 8000, 5000, 3000, 2000]
+}
+df = pd.DataFrame(data)
+
+grafico = crear_grafico(df)
+grafico.show()
