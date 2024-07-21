@@ -15,6 +15,6 @@ def crear_grafico(df):
 	)
 
 	fig.update_layout(yaxis_title = 'Calificación', xaxis_title='Ventas', showlegend=False)
-	fig.update_traces(textposition = 'inside', textinfo='percent+label', insidetextfont=dict(size=16))
+	fig.update_traces(textposition = 'inside', textinfo='percent+label', insidetextfont=dict(size=16), insidetextorientation='horizontal')
 
 	return fig
