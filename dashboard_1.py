@@ -24,7 +24,7 @@ def formata_numero(valor, prefijo=''):
 df_final = pro.generar_dataframe()
 
 # Configuración de los filtros en la barra lateral
-st.sidebar.image('logo3.png')
+st.sidebar.image('logo4.png')
 st.sidebar.title('Filtros')
 
 # Crear una lista de estados únicos y ordenados para el filtro
