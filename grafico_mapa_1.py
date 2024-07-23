@@ -98,7 +98,7 @@ def crear_grafico(df):
         margin=dict(l=0, r=0, t=0, b=0),
         coloraxis=dict(
             colorbar=dict(
-                title=None,  # Eliminar el título de la barra de color
+                title='Ingresos($)',  # Eliminar el título de la barra de color
                 ticksuffix=' ',  # Agregar un espacio después de cada valor en la barra de color
             )
         ),
