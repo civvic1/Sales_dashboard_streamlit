@@ -33,9 +33,6 @@ coords_estados = {
     'TO': {'lat': -10.184, 'lon': -48.333}
 }
 
-def formato_us(x):
-    return "${:,.2f}".format(x)
-
 def crear_grafico(df):
     # Leer el archivo JSON localmente
     file_path = 'bbdd/brazil-states.geojson'
@@ -51,9 +48,6 @@ def crear_grafico(df):
     df_ingresos_ciudad = df.groupby(['abbrev_state', 'Estado']).agg(
         ingresos_netos=('ingresos_netos', 'sum')
     ).reset_index()
-
-    # Formatear los ingresos netos para el formato en US
-    df_ingresos_ciudad['ingresos_netos_formateados'] = df_ingresos_ciudad['ingresos_netos'].apply(formato_us)
 
     # Crear el gráfico coroplético
     fig_mapa = px.choropleth(
@@ -102,7 +96,12 @@ def crear_grafico(df):
     fig_mapa.update_layout(
         height=450,
         margin=dict(l=0, r=0, t=0, b=0),
-        coloraxis_showscale=True,
+        coloraxis=dict(
+            colorbar=dict(
+                title=None,  # Eliminar el título de la barra de color
+                ticksuffix=' ',  # Agregar un espacio después de cada valor en la barra de color
+            )
+        ),
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
         geo=dict(
@@ -114,10 +113,8 @@ def crear_grafico(df):
     )
     fig_mapa.update_traces(
         marker_line_width=0,
-        hovertemplate='<b>%{customdata[1]}</b><br>Ventas Totales: %{customdata[2]}<extra></extra>',
-        customdata=df_ingresos_ciudad[['abbrev_state', 'Estado', 'ingresos_netos_formateados']].values
+        hovertemplate='<b>%{customdata[1]}</b><br>Ventas Totales: %{z}<extra></extra>'
     )
-    
     return fig_mapa
 
 
