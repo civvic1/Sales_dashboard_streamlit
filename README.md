@@ -8,7 +8,7 @@ Este repositorio contiene el código para un **dashboard de ventas interactivo**
 - 📈 **Creación de gráficos** y tablas interactivos.
 - 🔍 **Filtrado y segmentación** de datos por diferentes criterios.
 - 📉 **Análisis de tendencias** y patrones en los datos de ventas.
-- 📂 **Exportación de resultados** en diferentes formatos (por ejemplo, CSV, PDF).
+
 
 ## 🛠️ Requisitos
 
