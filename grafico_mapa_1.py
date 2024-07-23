@@ -1,5 +1,3 @@
-
-
 import json
 import pandas as pd
 import plotly.express as px
@@ -35,6 +33,9 @@ coords_estados = {
     'TO': {'lat': -10.184, 'lon': -48.333}
 }
 
+def formato_us(x):
+    return "${:,.2f}".format(x)
+
 def crear_grafico(df):
     # Leer el archivo JSON localmente
     file_path = 'bbdd/brazil-states.geojson'
@@ -51,6 +52,9 @@ def crear_grafico(df):
         ingresos_netos=('ingresos_netos', 'sum')
     ).reset_index()
 
+    # Formatear los ingresos netos para el formato en US
+    df_ingresos_ciudad['ingresos_netos_formateados'] = df_ingresos_ciudad['ingresos_netos'].apply(formato_us)
+
     # Crear el gráfico coroplético
     fig_mapa = px.choropleth(
         df_ingresos_ciudad,
@@ -59,7 +63,6 @@ def crear_grafico(df):
         color='ingresos_netos',
         color_continuous_scale='Blues',
         featureidkey='properties.sigla',
-        #title='Ventas Totales por Estado',
         range_color=[df_ingresos_ciudad['ingresos_netos'].min(), df_ingresos_ciudad['ingresos_netos'].max()],
         hover_data={'abbrev_state': False, 'Estado': True}
     )
@@ -111,11 +114,12 @@ def crear_grafico(df):
     )
     fig_mapa.update_traces(
         marker_line_width=0,
-        hovertemplate='<b>%{customdata[1]}</b><br>Ventas Totales: %{z}<extra></extra>'
+        hovertemplate='<b>%{customdata[1]}</b><br>Ventas Totales: %{customdata[2]}<extra></extra>',
+        customdata=df_ingresos_ciudad[['abbrev_state', 'Estado', 'ingresos_netos_formateados']].values
     )
     
-    
     return fig_mapa
+
 
 
 
