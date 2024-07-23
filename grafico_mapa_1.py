@@ -59,7 +59,7 @@ def crear_grafico(df):
         color='ingresos_netos',
         color_continuous_scale='Blues',
         featureidkey='properties.sigla',
-        title='Ventas Totales por Estado',
+        #title='Ventas Totales por Estado',
         range_color=[df_ingresos_ciudad['ingresos_netos'].min(), df_ingresos_ciudad['ingresos_netos'].max()],
         hover_data={'abbrev_state': False, 'Estado': True}
     )
@@ -75,7 +75,7 @@ def crear_grafico(df):
             visible=False,
             scope="south america",
             center={"lat": lat_lon['lat'], "lon": lat_lon['lon']},
-            projection_scale=8,  # Incrementar la escala para acercar más el estado
+            projection_scale=10,  # Incrementar la escala para acercar más el estado
             showland=False,
             showcountries=False,
             showcoastlines=False,
@@ -88,7 +88,7 @@ def crear_grafico(df):
             visible=False,
             scope="south america",
             center={"lat": -14.2350, "lon": -51.9253},
-            projection_scale=1.3,
+            projection_scale=1.5,
             showland=False,
             showcountries=False,
             showcoastlines=False,
@@ -99,7 +99,7 @@ def crear_grafico(df):
     fig_mapa.update_layout(
         height=450,
         margin=dict(l=0, r=0, t=0, b=0),
-        coloraxis_showscale=False,
+        coloraxis_showscale=True,
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
         geo=dict(
@@ -113,8 +113,11 @@ def crear_grafico(df):
         marker_line_width=0,
         hovertemplate='<b>%{customdata[1]}</b><br>Ventas Totales: %{z}<extra></extra>'
     )
-
+    
+    
     return fig_mapa
+
+
 
 
 
