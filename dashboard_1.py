@@ -28,7 +28,7 @@ df_final = pro.generar_dataframe()
 valor_total_inicial = df_final['valor_total'].sum()
 
 # Configuración de los filtros en la barra lateral
-st.sidebar.image('logo5.png')
+st.sidebar.image('logo10.png')
 st.sidebar.title('Filtros')
 
 # Crear una lista de estados únicos y ordenados para el filtro
