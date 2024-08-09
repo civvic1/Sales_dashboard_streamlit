@@ -24,5 +24,12 @@ El dashboard se abrirá en una nueva pestaña del navegador. Puede interactuar c
 - 📄 Streamlit Documentation
 - 📄 Pandas Documentation
 
+## 🤝 Equipo
+- Julio Albero Lazarte
+- David Isaac Carrillo
+- Agustín Cena
+- Gabriel Cánepa
+
 ## 💖 Agradecimientos
 Agradecimientos especiales a Alejandro Gamarra, instructor del bootcamp.
+
